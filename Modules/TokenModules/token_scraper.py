@@ -1,0 +1,12 @@
+async def scraper(self) -> None:
+    self.send_logo()
+    self.cmessage("\n| User token (Must be in server) >>: ",True)
+    token = input()
+    self.cmessage("| Server ID >>: ",True)
+    guild_id = input()
+    self.cmessage("| Any channel ID >>: ",True)
+    channel_id = input()
+    scrapeobj = self.su.DiscordSocket(token,guild_id,channel_id)
+    scrapeobj.member_scrape(guild_id,channel_id)
+    input()
+    await self.Hydra.main.menu()
