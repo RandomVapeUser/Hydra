@@ -30,7 +30,7 @@ class Main(Assets.AsciiAssets):
     manager = md.ModuleManager()
     
     def clear(self) -> None:
-        os.system('cls' if os.name == 'nt' else 'clear')
+        os.system("cls" if os.name == "nt" else "clear")
 
     def get_tokens(self) -> None:
         """Updates Token List"""
@@ -131,9 +131,9 @@ class Main(Assets.AsciiAssets):
 
     async def menu(self) -> None:
         """Main menu for users"""
+        self.get_tokens()
         while True:
             self.clear()
-            self.get_tokens()
             os.system(f"        title Hydra Multitool ^| Loaded {self.tokenamount} tokens ^| Version 0.6 Recoded by Sal")
             self.send_logo()
             self.cmessage(f"        [Token Amount] ~> Loaded {self.tokenamount} tokens!")
