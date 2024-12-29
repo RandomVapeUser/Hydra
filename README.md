@@ -1,5 +1,7 @@
 # Hydra Multitool
 
+**Status:** Recoding module handling and code optimization.
+
 **Features:**
 - Supports HTTP/SOCKS4/SOCKS5 Proxies
 - User ID Scrapper
