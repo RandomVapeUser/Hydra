@@ -1,6 +1,6 @@
 # Hydra Multitool
 
-**Status:** Recoding module handling and code optimization.
+**Status:** Recoding module handling and code optimization. (Not Working)
 
 **Features:**
 - Supports HTTP/SOCKS4/SOCKS5 Proxies
