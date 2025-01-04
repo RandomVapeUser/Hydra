@@ -18,10 +18,10 @@ config = json.load(open("config.json", "r+"))
 Assets.AsciiAssets.set_theme(config["theme"].upper())
 
 themes = {
-    1 : "DEFAULT",
-    2 : "BLUE",
-    3 : "ORANGE",
-    4 : "RED"
+    "1" : "DEFAULT",
+    "2" : "BLUE",
+    "3" : "ORANGE",
+    "4" : "RED"
 }
 
 class Main(Assets.AsciiAssets):
@@ -102,7 +102,8 @@ class Main(Assets.AsciiAssets):
                 self.clear()
                 self.send_logo()
                 self.cmessage(self.main_text[4], True)
-                theme = input()
+                theme = input().strip()
+
                 if theme in themes.keys():
                     with open("config.json", "r+") as file:
                         config = json.load(file)
@@ -111,11 +112,11 @@ class Main(Assets.AsciiAssets):
                     with open("config.json", "w") as file:
                         json.dump(config, file, indent=4)
                         
-                    self.cmessage("\n            | Theme has been updated. Restart Hydra to complete change.")
+                    self.cmessage("\n        | Theme has been updated, restart Hydra to complete change.")
                     input()
                     await self.menu()
                 else:
-                    self.cmessage("\n            | Invalid theme choice. Returning to menu.")
+                    self.cmessage("\n        | Invalid theme choice.")
                     input()
                     await self.menu()
             case _:
