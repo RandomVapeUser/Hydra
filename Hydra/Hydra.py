@@ -9,18 +9,14 @@ parent_dirct = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, parent_dirct[:-6])
 from Modules import ModuleManager as md
 
-themes = {
-    "1" : "DEFAULT",
-    "2" : "RED",
-    "3" : "BLUE",
-    "4" : "ORANGE"
-}
-
+manager = md.ModuleManager()
 dr = os.path.join(os.getcwd(), "Data/tokens.txt")
 if not os.path.isfile(dr):
     open(dr, "w")
 
 config = json.load(open("config.json", "r+"))
+Assets.AsciiAssets.set_theme(config["theme"].upper())
+
 class Main(Assets.AsciiAssets):
     """Main class to handle menu"""
     def __init__(self):
@@ -28,7 +24,6 @@ class Main(Assets.AsciiAssets):
         self.dnow = str(datetime.datetime.now().strftime("%H:%M:%S"))
     
     tokenamount = 0
-    manager = md.ModuleManager()
     
     def clear(self) -> None:
         os.system("cls" if os.name == "nt" else "clear")
@@ -81,7 +76,7 @@ class Main(Assets.AsciiAssets):
             case "<<":
                 await self.menu()
             case _ if choice in [1,2,3]:
-                await self.manager.select_module(choices[choice][1],choice)
+                await manager.select_module(choices[choice][1],choice)
             case _ if choice in [4,5]:
                 await choices[choice]()
             case _:
@@ -103,7 +98,7 @@ class Main(Assets.AsciiAssets):
                 if theme in themes.keys():
                     with open("config.json", "r") as file:
                         config = json.load(file)
-                    config["themes"] = themes[theme]
+                    config["theme"] = themes[theme]
 
                     with open("config.json", "w") as file:
                         json.dump(config, file, indent=4)
