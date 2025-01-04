@@ -102,6 +102,9 @@ class AsciiAssets:
             case "ORANGE": 
                 AsciiAssets.start_color = 0xFFA500
                 AsciiAssets.end_color = Color.orange_red
+            case _:
+                AsciiAssets.start_color = 0x4BBEE3
+                AsciiAssets.end_color = Color.medium_violet_red
 
     #Custom message display
     @staticmethod
