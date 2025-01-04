@@ -141,15 +141,13 @@ class Main(Assets.AsciiAssets):
             self.get_tokens()
             os.system(f"        title Hydra Multitool ^| Loaded {self.tokenamount} tokens ^| Version 0.6 Recoded by Sal")
             self.send_logo()
-            self.cmessage(f"        [Token Amount] ~> Loaded {self.tokenamount} tokens!")
+            self.cmessage(f"\n        [Token Amount] ~> Loaded {self.tokenamount} tokens!")
             self.cmessage(self.main_text[6],True)
 
             choice = input().strip()
             try:
                 if int(choice) in [1,2,3,4,5,6,7,8,8]:
                     await self.choice_manager(int(choice))
-                elif choice == "XX":
-                    sys.exit()
                 else:
                     continue
             except Exception:
