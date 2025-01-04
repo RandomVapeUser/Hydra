@@ -5,7 +5,7 @@ import json
 import sys
 import os
 
-sys.path.insert(0, r'C:\\Users\\salom\\Desktop\\Hydra')
+sys.path.insert(0, r"C:\\Users\\salom\\Desktop\\Hydra")
 from Modules import ModuleManager as md
 
 themes = {
@@ -30,7 +30,7 @@ class Main(Assets.AsciiAssets):
     manager = md.ModuleManager()
     
     def clear(self) -> None:
-        os.system('cls' if os.name == 'nt' else 'clear')
+        os.system("cls" if os.name == "nt" else "clear")
 
     def get_tokens(self) -> None:
         """Updates Token List"""
