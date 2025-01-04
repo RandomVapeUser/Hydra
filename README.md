@@ -2,6 +2,11 @@
 
 **Status:** Recoding module handling and code optimization. (Not Working)
 
+**Erros to Fix**
+- Crash at start (Circular Import and directory errors)
+- Divide each module into its seperate file
+- Optimize code
+  
 **Features:**
 - Supports HTTP/SOCKS4/SOCKS5 Proxies
 - User ID Scrapper
