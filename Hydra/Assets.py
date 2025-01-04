@@ -120,11 +120,3 @@ class AsciiAssets:
                 start_color=AsciiAssets.start_color, 
                 end_color=AsciiAssets.end_color
             )
-
-
-    
-    
-
-    
-
-
