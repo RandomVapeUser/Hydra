@@ -41,7 +41,7 @@
 
   
 **Discord Bot Modules:**
-- Coming Soob...(Nuker,Mass DM, etc)
+- Coming Soon...(Nuker,Mass DM, etc)
 
 **Coded By:**
 - Sal (salomao31v2)
