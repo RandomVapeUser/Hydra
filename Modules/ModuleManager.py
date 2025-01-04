@@ -4,8 +4,8 @@ import json
 import sys
 import os
 
-current_user_folder = os.path.basename(os.path.expanduser("~"))
-sys.path.insert(0, r"C:\\Users\\{}\\Desktop\\Hydra\\Modules".format(current_user_folder))
+parent_dirct = os.path.dirname(os.path.abspath(__file__))
+sys.path.insert(0, parent_dirct)
 from TokenModules import (
     token_cspammer,
     token_joiner,
