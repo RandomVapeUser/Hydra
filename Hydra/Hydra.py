@@ -17,6 +17,13 @@ if not os.path.isfile(dr):
 config = json.load(open("config.json", "r+"))
 Assets.AsciiAssets.set_theme(config["theme"].upper())
 
+themes = {
+    1 : "DEFAULT",
+    2 : "BLUE",
+    3 : "ORANGE",
+    4 : "RED"
+}
+
 class Main(Assets.AsciiAssets):
     """Main class to handle menu"""
     def __init__(self):
@@ -67,18 +74,19 @@ class Main(Assets.AsciiAssets):
             4 : self.settings,
             5 : self.credits
         }
+        if choice in [4,5]:
+            await choices[choice]()
 
         self.clear()
         self.send_logo()
         self.cmessage(choices[choice][2],True)
-        choice = int(input())
+        choice = input().strip()
+
         match choice:
             case "<<":
                 await self.menu()
-            case _ if choice in [1,2,3]:
+            case _ if int(choice) in [1,2,3]:
                 await manager.select_module(choices[choice][1],choice)
-            case _ if choice in [4,5]:
-                await choices[choice]()
             case _:
                 self.cmessage("\n | Invalid Option try again.")
                 input()
@@ -88,7 +96,7 @@ class Main(Assets.AsciiAssets):
         self.clear()
         self.send_logo()
         self.cmessage(self.main_text[3], True)
-        option = input()
+        option = input().strip()
         match option:
             case "1":
                 self.clear()
@@ -96,7 +104,7 @@ class Main(Assets.AsciiAssets):
                 self.cmessage(self.main_text[4], True)
                 theme = input()
                 if theme in themes.keys():
-                    with open("config.json", "r") as file:
+                    with open("config.json", "r+") as file:
                         config = json.load(file)
                     config["theme"] = themes[theme]
 
