@@ -1,5 +1,6 @@
 import requests
 import aiohttp
+import asyncio
 import json
 import sys
 import os
@@ -42,19 +43,19 @@ class ModuleManager():
        match type:
            case "tokens":
             try:
-                await self.token_modules[modulo](self)
+                await self.token_modules[modulo-1](self)
             except Exception as e:
                 self.cmessage(e)
                 input()
            case "webhooks":
             try:
-                await self.webhook_modules[modulo](self)
+                await self.webhook_modules[modulo-1](self)
             except Exception as e:  
                 self.cmessage(e)	
                 input()
            case "misc":
             try:
-                await self.misc_modules[modulo](self)
+                await self.misc_modules[modulo-1](self)
             except Exception as e:  
                 self.cmessage(e)	
                 input() 
