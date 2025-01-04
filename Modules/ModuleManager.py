@@ -1,3 +1,11 @@
+import requests
+import aiohttp
+import json
+import sys
+import os
+
+current_user_folder = os.path.basename(os.path.expanduser("~"))
+sys.path.insert(0, r"C:\\Users\\{}\\Desktop\\Hydra\\Modules".format(current_user_folder))
 from TokenModules import (
     token_cspammer,
     token_joiner,
@@ -9,19 +17,8 @@ from TokenModules import (
     token_biochanger,
     token_namechanger
 )
-from WebhookModules import (
-    WebhookModules
-)
-import requests
-import aiohttp
-import json
-import sys
-import os
 
-sys.path.insert(0, r"C:\\Users\\salom\\Desktop\\HydraV2-main")
-from Hydra import Assets
-
-class ModuleManager(Assets.AsciiAssets):
+class ModuleManager():
     def __init__(self) -> None:
         pass
 
