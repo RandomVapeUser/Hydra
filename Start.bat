@@ -1,1 +1,1 @@
-cmd /k python MainAuth.py
+cmd /k python Main.py
