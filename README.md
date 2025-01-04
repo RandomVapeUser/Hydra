@@ -5,7 +5,7 @@
 **Errors to Fix**
 - ~~Crash at start (Circular Import and directory errors)~~
 - Divide each module into its seperate file
-- Settings and credits module functions
+- ~~Settings and credits module functions~~
 - Modules not loading
 - Optimize code
   
