@@ -5,7 +5,8 @@ import json
 import sys
 import os
 
-sys.path.insert(0, r"C:\\Users\\salom\\Desktop\\Hydra")
+parent_dirct = os.path.dirname(os.path.abspath(__file__))
+sys.path.insert(0, parent_dirct[:-6])
 from Modules import ModuleManager as md
 
 themes = {
