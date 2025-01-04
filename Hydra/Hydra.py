@@ -1,12 +1,12 @@
+from Hydra import Assets
 import datetime
 import aiohttp
 import json
 import sys
 import os
 
-sys.path.insert(0, r'C:\\Users\\salom\\Desktop\\HydraV2-main\\Modules')
+sys.path.insert(0, r'C:\\Users\\salom\\Desktop\\Hydra')
 from Modules import ModuleManager as md
-from Hydra import Assets
 
 themes = {
     "1" : "DEFAULT",
@@ -30,7 +30,7 @@ class Main(Assets.AsciiAssets):
     manager = md.ModuleManager()
     
     def clear(self) -> None:
-        os.system("cls" if os.name == "nt" else "clear")
+        os.system('cls' if os.name == 'nt' else 'clear')
 
     def get_tokens(self) -> None:
         """Updates Token List"""
@@ -109,13 +109,13 @@ class Main(Assets.AsciiAssets):
                         
                     self.cmessage("\n            | Theme has been updated. Restart Hydra to complete change.")
                     input()
-                    await main.menu()
+                    await self.menu()
                 else:
                     self.cmessage("\n            | Invalid theme choice. Returning to menu.")
                     input()
-                    await main.menu()
+                    await self.menu()
             case _:
-                await main.menu()
+                await self.menu()
 
     async def credits(self) -> None:
         while True:
@@ -127,13 +127,13 @@ class Main(Assets.AsciiAssets):
                 continue
             else:
                 break
-        await main.menu()
+        await self.menu()
 
     async def menu(self) -> None:
         """Main menu for users"""
-        self.get_tokens()
         while True:
             self.clear()
+            self.get_tokens()
             os.system(f"        title Hydra Multitool ^| Loaded {self.tokenamount} tokens ^| Version 0.6 Recoded by Sal")
             self.send_logo()
             self.cmessage(f"        [Token Amount] ~> Loaded {self.tokenamount} tokens!")
@@ -149,5 +149,3 @@ class Main(Assets.AsciiAssets):
                     continue
             except Exception:
                 continue
-
-main = Main()
