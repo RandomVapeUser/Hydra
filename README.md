@@ -3,7 +3,7 @@
 **Status:** Recoding module handling and code optimization. (Not Working)
 
 **Errors to Fix**
-- Crash at start (Circular Import and directory errors)
+- ~~Crash at start (Circular Import and directory errors)~~
 - Divide each module into its seperate file
 - Optimize code
   
