@@ -61,7 +61,6 @@ class AsciiAssets:
         |
         | Choose >>: """,
         """
-
         | [01] >>> Webhook Modules
         | [02] >>> Token Modules
         | [03] >>> Other Modules
