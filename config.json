@@ -1,5 +1,4 @@
 {
-    "themes": "ORANGE",
-    "themesavailabletochange": "default,blue,orange,red any other theme or will be reversed to default",
-    "debug": true
+    "theme": "orange",
+    "themes": "default,blue,orange,red any other theme will be reversed to default"
 }
