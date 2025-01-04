@@ -2,7 +2,7 @@
 
 **Status:** Recoding module handling and code optimization. (Not Working)
 
-**Erros to Fix**
+**Errors to Fix**
 - Crash at start (Circular Import and directory errors)
 - Divide each module into its seperate file
 - Optimize code
@@ -21,7 +21,7 @@
 - Other/Misc Modules
 
   
-**Webhook Modules:**
+**Token Modules:**
 - Channel Spammer         | Spams discord channels with content
 - Server Joiner/Leaver    | Automaticly makes users join or leave a server
 - Token Checker           | Checks for Valid/Invalid/Locked Tokens
