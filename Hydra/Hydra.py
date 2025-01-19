@@ -19,18 +19,17 @@ Assets.AsciiAssets.set_theme(config["theme"].upper())
 
 themes = {
     "1" : "DEFAULT",
-    "2" : "BLUE",
-    "3" : "ORANGE",
-    "4" : "RED"
+    "2" : "RED",
+    "3" : "BLUE",
+    "4" : "ORANGE"
 }
 
 class Main(Assets.AsciiAssets):
     """Main class to handle menu"""
     def __init__(self):
         self.tokens = []
+        self.tokenamount = 0
         self.dnow = str(datetime.datetime.now().strftime("%H:%M:%S"))
-    
-    tokenamount = 0
     
     def clear(self) -> None:
         os.system("cls" if os.name == "nt" else "clear")
@@ -93,6 +92,7 @@ class Main(Assets.AsciiAssets):
             
     async def settings(self) -> None:
         """Hydra Settings Menu"""
+        global themes
         self.clear()
         self.send_logo()
         self.cmessage(self.main_text[3], True)
@@ -105,13 +105,12 @@ class Main(Assets.AsciiAssets):
                 theme = input().strip()
 
                 if theme in themes.keys():
-                    with open("config.json", "r+") as file:
-                        config = json.load(file)
-                    config["theme"] = themes[theme]
-
-                    with open("config.json", "w") as file:
-                        json.dump(config, file, indent=4)
-                        
+                    new_config = {
+                        "theme": themes[theme]
+                        }
+                    with open("config.json", "w") as config:
+                        json.dump(new_config, config)
+                    
                     self.cmessage("\n        | Theme has been updated, restart Hydra to complete change.")
                     input()
                     await self.menu()
