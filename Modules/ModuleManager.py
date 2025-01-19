@@ -1,6 +1,5 @@
 import requests
 import aiohttp
-import asyncio
 import json
 import sys
 import os
@@ -57,23 +56,23 @@ class ModuleManager():
         misc_gcnamechanger.gcnamechanger
     ]
     
-    async def select_module(self, type: str, modulo: int) -> None:
+    async def select_module(self, hydra_self, type: str, modulo: int) -> None:
        match type:
            case "tokens":
             try:
-                await self.token_modules[modulo-1](self)
+                await self.token_modules[modulo-1](hydra_self)
             except Exception as e:
                 self.cmessage(e)
                 input()
            case "webhooks":
             try:
-                await self.webhook_modules[modulo-1](self)
+                await self.webhook_modules[modulo-1](hydra_self)
             except Exception as e:  
                 self.cmessage(e)	
                 input()
            case "misc":
             try:
-                await self.misc_modules[modulo-1](self)
+                await self.misc_modules[modulo-1](hydra_self)
             except Exception as e:  
                 self.cmessage(e)	
                 input() 

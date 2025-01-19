@@ -67,7 +67,7 @@ class Main(Assets.AsciiAssets):
                 
     async def choice_manager(self, choice: int) -> None:
         choices = {
-            1 : [[1,2,3,4,5,6,7,8,9], "tokens",self.main_text[1]],
+            1 : [[1,2,3,4,5,6,7,8,9],"tokens",self.main_text[1]],
             2 : [[1,2,3,4],"webhooks",self.main_text[0]],
             3 : [[1,2,3],"misc",self.main_text[2]],
             4 : self.settings,
@@ -79,15 +79,19 @@ class Main(Assets.AsciiAssets):
         self.clear()
         self.send_logo()
         self.cmessage(choices[choice][2],True)
-        choice = input().strip()
+        module_choice = input().strip()
+        if int(module_choice) in choices[choice][0]:
+            try:
+                await manager.select_module(self,choices[choice][1],choice)
+            except Exception as exp:
+                print(exp)
+                input()
 
-        match choice:
+        match module_choice:
             case "<<":
                 await self.menu()
-            case _ if int(choice) in [1,2,3]:
-                await manager.select_module(choices[choice][1],choice)
             case _:
-                self.cmessage("\n | Invalid Option try again.")
+                self.cmessage("\n        | Invalid Option try again.")
                 input()
             
     async def settings(self) -> None:
@@ -138,14 +142,14 @@ class Main(Assets.AsciiAssets):
         while True:
             self.clear()
             self.get_tokens()
-            os.system(f"        title Hydra Multitool ^| Loaded {self.tokenamount} tokens ^| Version 0.6 Recoded by Sal")
+            os.system(f"        title Hydra Multitool ^| Loaded {self.tokenamount} tokens ^| Version 0.6.1 Recoded by salomao31v3")
             self.send_logo()
             self.cmessage(f"\n        [Token Amount] ~> Loaded {self.tokenamount} tokens!")
             self.cmessage(self.main_text[6],True)
 
             choice = input().strip()
             try:
-                if int(choice) in [1,2,3,4,5,6,7,8,8]:
+                if int(choice) in [1,2,3,4,5]:
                     await self.choice_manager(int(choice))
                 else:
                     continue
