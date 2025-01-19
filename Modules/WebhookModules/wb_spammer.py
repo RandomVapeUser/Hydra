@@ -7,14 +7,14 @@ async def hspammer_menu(self):
     self.clear()
     self.send_logo()
 
-    self.cmessage("| Webhook URL >>: ", True)
+    self.cmessage(" | Webhook URL >>: ", True)
     self.webhook = input()
     self.hcheck()
 
-    self.cmessage("| Message >>: ", True)
+    self.cmessage(" | Message >>: ", True)
     self.message = input()
 
-    self.cmessage("| Threads (Not recommended 5+ threads) >>: ", True)
+    self.cmessage(" | Threads (Not recommended 5+ threads) >>: ", True)
     try:
         self.threads = int(input())
         raise Exception if self.threads <= 0 else None
@@ -41,10 +41,10 @@ async def hspammer_menu(self):
                     async with session.post(url=self.webhook, json={"content": message}) as response:
                         match response.status:
                             case 204:
-                                print(Fore.GREEN + "| [SENT] ", end="")
+                                print(Fore.GREEN + " | [Sent] ", end="")
                                 self.cmessage(f">>> '{message}' | {self.dnow}")
                             case 429:
-                                print(Fore.YELLOW + "| [Ratelimit] ", end="")
+                                print(Fore.YELLOW + " | [Ratelimit] ", end="")
                                 self.cmessage(f">>> '{message}' | {self.dnow}")
                             case _:
                                 self.cmessage(f"[Failed] Status {response.status} - Failed to Spam URL.")

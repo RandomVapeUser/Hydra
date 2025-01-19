@@ -67,8 +67,8 @@ class Main(Assets.AsciiAssets):
                 
     async def choice_manager(self, choice: int) -> None:
         choices = {
-            1 : [[1,2,3,4,5,6,7,8,9],"tokens",self.main_text[1]],
-            2 : [[1,2,3,4],"webhooks",self.main_text[0]],
+            1 : [[1,2,3,4],"webhooks",self.main_text[1]],
+            2 : [[1,2,3,4,5,6,7,8,9],"tokens",self.main_text[0]],
             3 : [[1,2,3],"misc",self.main_text[2]],
             4 : self.settings,
             5 : self.credits
@@ -82,7 +82,7 @@ class Main(Assets.AsciiAssets):
         module_choice = input().strip()
         if int(module_choice) in choices[choice][0]:
             try:
-                await manager.select_module(self,choices[choice][1],choice)
+                await manager.select_module(self,choices[choice][int(module_choice)],choice)
             except Exception as exp:
                 print(exp)
                 input()

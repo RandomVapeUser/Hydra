@@ -1,3 +1,4 @@
+from typing import Self
 import requests
 import aiohttp
 import json
@@ -46,9 +47,9 @@ class ModuleManager():
     ]
 
     webhook_modules = [
-        wb_deleter.hdeleter,
         wb_spammer.hspammer_menu,
-        wb_namechanger.hnamechanger
+        wb_namechanger.hnamechanger,
+        wb_deleter.hdeleter
     ]
 
     misc_modules = [
@@ -56,7 +57,8 @@ class ModuleManager():
         misc_gcnamechanger.gcnamechanger
     ]
     
-    async def select_module(self, hydra_self, type: str, modulo: int) -> None:
+    #Uses an hydra instance to call the methods inside the fuctions selected
+    async def select_module(self, hydra_self: Self, type: str, modulo: int) -> None:
        match type:
            case "tokens":
             try:
