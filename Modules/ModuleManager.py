@@ -26,8 +26,10 @@ from WebhookModules import (
 )
 
 from MiscModules import (
-    
+    misc_inviteinfo,
+    misc_gcnamechanger
 )
+
 class ModuleManager():
     def __init__(self) -> None:
         pass
@@ -50,8 +52,9 @@ class ModuleManager():
         wb_namechanger.hnamechanger
     ]
 
-    micc_modules = [
-
+    misc_modules = [
+        misc_inviteinfo.invite_info,
+        misc_gcnamechanger.gcnamechanger
     ]
     
     async def select_module(self, type: str, modulo: int) -> None:
