@@ -1,3 +1,7 @@
+from colorama import Fore
+import aiohttp
+import asyncio
+
 async def hnamechanger(self):
         """Change the webhook name."""
         self.clear()
@@ -20,12 +24,12 @@ async def hnamechanger(self):
                     if response.status == 200:
                         print(Fore.GREEN + "[SUCCESS] ",end="")
                         self.cmessage(f" >>> Changed webhook name to '{hook_name}'")
-                        super().log(f"{Hydra.dnow} | Webhook Name Changer >>> {self.webhook}")
-                        exit = input()
-                        await Hydra.main.menu()
+                        input()
+                        await self.menu()
                     else:
                         self.cmessage(f"[ERROR] Failed to change name. Status code: {response.status}")
                         asyncio.sleep(5)
             except Exception as e:
                 self.cmessage(f"[Error] Exception during name change: {str(e)}")
-                asyncio.sleep(5)
+                input()
+                await self.menu()
