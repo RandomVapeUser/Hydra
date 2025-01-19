@@ -3,7 +3,7 @@ import aiohttp
 import asyncio
 
 async def hnamechanger(self):
-        """Change the webhook name."""
+        """Change the webhook name"""
         self.clear()
         self.send_logo()
 
