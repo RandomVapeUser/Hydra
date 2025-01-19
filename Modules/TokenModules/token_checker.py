@@ -5,9 +5,11 @@ import asyncio
 async def token_checker(self) -> None:
     self.send_logo()
     self.gettokens()
+
     Valid_list = []
     Locked_list = []
     Invalid_list = []
+
     async def checker(self,token) -> None:
         async with aiohttp.ClientSession() as session:
             async with session.get("https://discord.com/api/v9/users/@me/library", headers={"authorization": token}) as response:
@@ -33,14 +35,17 @@ async def token_checker(self) -> None:
         task = asyncio.create_task(checker(self,token))
         tasks.append(task)
     await asyncio.gather(*tasks)
+
     self.cmessage(f"\n| {len(Valid_list)} ",True)
     print(Fore.GREEN + "Valid tokens.")
     self.cmessage(f"| {len(Invalid_list)} ",True)
     print(Fore.RED + "Invalid tokens.")
     self.cmessage(f"| {len(Locked_list)} ",True)
     print(Fore.YELLOW + "Locked tokens.")
+    
     self.cmessage("\n| Remove Invalid Tokens? (Y/N)\n| >>: ",True)
     choice = input().upper()
+    
     if choice == "Y":
         existing_tokens = set()
         with open("tokens.txt", "r+") as f:
@@ -49,7 +54,8 @@ async def token_checker(self) -> None:
         token_list = list(updated_tokens)
         with open("tokens.txt", "w+") as f:
             f.write("\n".join(token_list) + "\n")
-        token_amount -= len(Invalid_list) + len(Locked_list)
+
+        self.tokenamount -= len(Invalid_list) + len(Locked_list)
         self.cmessage(f"\n| Removed {len(Invalid_list)} Invalid Tokens, {len(Locked_list)} Locked Tokens!")
         
     input()
