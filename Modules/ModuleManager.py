@@ -19,6 +19,15 @@ from TokenModules import (
     token_namechanger
 )
 
+from WebhookModules import (
+    wb_deleter,
+    wb_spammer,
+    wb_namechanger
+)
+
+from MiscModules import (
+    
+)
 class ModuleManager():
     def __init__(self) -> None:
         pass
@@ -36,6 +45,12 @@ class ModuleManager():
     ]
 
     webhook_modules = [
+        wb_deleter.hdeleter,
+        wb_spammer.hspammer_menu,
+        wb_namechanger.hnamechanger
+    ]
+
+    micc_modules = [
 
     ]
     
