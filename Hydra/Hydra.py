@@ -19,18 +19,17 @@ Assets.AsciiAssets.set_theme(config["theme"].upper())
 
 themes = {
     "1" : "DEFAULT",
-    "2" : "BLUE",
-    "3" : "ORANGE",
-    "4" : "RED"
+    "2" : "RED",
+    "3" : "BLUE",
+    "4" : "ORANGE"
 }
 
 class Main(Assets.AsciiAssets):
     """Main class to handle menu"""
     def __init__(self):
         self.tokens = []
+        self.tokenamount = 0
         self.dnow = str(datetime.datetime.now().strftime("%H:%M:%S"))
-    
-    tokenamount = 0
     
     def clear(self) -> None:
         os.system("cls" if os.name == "nt" else "clear")
@@ -49,11 +48,11 @@ class Main(Assets.AsciiAssets):
                 input()
                 await self.menu()
 
-    async def hcheck(self) -> None:
+    async def hcheck(self,webhook) -> None:
         """Check webhook status code (validate webhook)."""
         async with aiohttp.ClientSession() as session:
             try:
-                async with session.get(self.webhook) as response:
+                async with session.get(webhook) as response:
                     match response.status:
                         case 200:
                             pass
@@ -64,12 +63,12 @@ class Main(Assets.AsciiAssets):
             except Exception:
                 self.cmessage("\n| Invalid Webhook URL. Try again!")
                 input()
-                self.menu()  
+                await self.menu()  
                 
     async def choice_manager(self, choice: int) -> None:
         choices = {
-            1 : [[1,2,3,4,5,6,7,8,9], "tokens",self.main_text[1]],
-            2 : [[1,2,3,4],"webhooks",self.main_text[0]],
+            1 : [[1,2,3,4],"webhooks",self.main_text[1]],
+            2 : [[1,2,3,4,5,6,7,8,9],"tokens",self.main_text[0]],
             3 : [[1,2,3],"misc",self.main_text[2]],
             4 : self.settings,
             5 : self.credits
@@ -80,19 +79,24 @@ class Main(Assets.AsciiAssets):
         self.clear()
         self.send_logo()
         self.cmessage(choices[choice][2],True)
-        choice = input().strip()
+        module_choice = input().strip()
+        if int(module_choice) in choices[choice][0]:
+            try:
+                await manager.select_module(self,choices[choice][int(module_choice)],choice)
+            except Exception as exp:
+                print(exp)
+                input()
 
-        match choice:
+        match module_choice:
             case "<<":
                 await self.menu()
-            case _ if int(choice) in [1,2,3]:
-                await manager.select_module(choices[choice][1],choice)
             case _:
-                self.cmessage("\n | Invalid Option try again.")
+                self.cmessage("\n        | Invalid Option try again.")
                 input()
             
     async def settings(self) -> None:
         """Hydra Settings Menu"""
+        global themes
         self.clear()
         self.send_logo()
         self.cmessage(self.main_text[3], True)
@@ -105,13 +109,12 @@ class Main(Assets.AsciiAssets):
                 theme = input().strip()
 
                 if theme in themes.keys():
-                    with open("config.json", "r+") as file:
-                        config = json.load(file)
-                    config["theme"] = themes[theme]
-
-                    with open("config.json", "w") as file:
-                        json.dump(config, file, indent=4)
-                        
+                    new_config = {
+                        "theme": themes[theme]
+                        }
+                    with open("config.json", "w") as config:
+                        json.dump(new_config, config)
+                    
                     self.cmessage("\n        | Theme has been updated, restart Hydra to complete change.")
                     input()
                     await self.menu()
@@ -139,14 +142,14 @@ class Main(Assets.AsciiAssets):
         while True:
             self.clear()
             self.get_tokens()
-            os.system(f"        title Hydra Multitool ^| Loaded {self.tokenamount} tokens ^| Version 0.6 Recoded by Sal")
+            os.system(f"        title Hydra Multitool ^| Loaded {self.tokenamount} tokens ^| Version 0.6.1 Recoded by salomao31v3")
             self.send_logo()
             self.cmessage(f"\n        [Token Amount] ~> Loaded {self.tokenamount} tokens!")
             self.cmessage(self.main_text[6],True)
 
             choice = input().strip()
             try:
-                if int(choice) in [1,2,3,4,5,6,7,8,8]:
+                if int(choice) in [1,2,3,4,5]:
                     await self.choice_manager(int(choice))
                 else:
                     continue

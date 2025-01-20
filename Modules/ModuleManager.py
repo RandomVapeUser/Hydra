@@ -1,6 +1,6 @@
+from typing import Self
 import requests
 import aiohttp
-import asyncio
 import json
 import sys
 import os
@@ -17,6 +17,17 @@ from TokenModules import (
     token_scraper,
     token_biochanger,
     token_namechanger
+)
+
+from WebhookModules import (
+    wb_deleter,
+    wb_spammer,
+    wb_namechanger
+)
+
+from MiscModules import (
+    misc_inviteinfo,
+    misc_gcnamechanger
 )
 
 class ModuleManager():
@@ -36,26 +47,34 @@ class ModuleManager():
     ]
 
     webhook_modules = [
+        wb_spammer.hspammer_menu,
+        wb_namechanger.hnamechanger,
+        wb_deleter.hdeleter
+    ]
 
+    misc_modules = [
+        misc_inviteinfo.invite_info,
+        misc_gcnamechanger.gcnamechanger
     ]
     
-    async def select_module(self, type: str, modulo: int) -> None:
+    #Uses an hydra instance to call the methods inside the fuctions selected
+    async def select_module(self, hydra_self: Self, type: str, modulo: int) -> None:
        match type:
            case "tokens":
             try:
-                await self.token_modules[modulo-1](self)
+                await self.token_modules[modulo-1](hydra_self)
             except Exception as e:
                 self.cmessage(e)
                 input()
            case "webhooks":
             try:
-                await self.webhook_modules[modulo-1](self)
+                await self.webhook_modules[modulo-1](hydra_self)
             except Exception as e:  
                 self.cmessage(e)	
                 input()
            case "misc":
             try:
-                await self.misc_modules[modulo-1](self)
+                await self.misc_modules[modulo-1](hydra_self)
             except Exception as e:  
                 self.cmessage(e)	
                 input() 
