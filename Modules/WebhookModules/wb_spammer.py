@@ -47,7 +47,7 @@ async def hspammer_menu(self):
                                 print(Fore.YELLOW + "| [Ratelimit] ", end="")
                                 self.cmessage(f">>> '{message}' | {self.dnow}")
                             case _:
-                                self.cmessage(f"[Failed] Status {response.status} - Failed to Spam URL.")
+                                self.cmessage(f"[Failed] Status {response.status} - Failed to Spam URL")
                                 input()
                                 break
                 except Exception as e:
