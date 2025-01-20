@@ -2,13 +2,12 @@ from colorama import Fore
 import aiohttp
 import asyncio
 
-hd_self = None
+mself = None
 async def hspammer_menu(self):
     """Spam the webhook with messages."""
-    global hd_self
     self.clear()
     self.send_logo()
-    hd_self = self
+    mself = self
 
     self.cmessage(" | Webhook URL >>: ", True)
     webhook = input()
@@ -18,15 +17,15 @@ async def hspammer_menu(self):
     message = input()
 
     self.cmessage(" | Threads (Not recommended 5+ threads) >>: ", True)
-    threads = input().strip()
-    if int(threads) <= 0:
+    threads = int(input())
+    if threads <= 0:
         self.cmessage(" Threads must be higher than 0!")
         input()
         await self.menu()
 
-    self.cmessage("| Delay >>: ", True)
-    delay = input().strip()
-    if int(self.delay) < 0:
+    self.cmessage(" | Delay >>: ", True)
+    delay = float(input())
+    if delay < 0:
         self.cmessage(" Delay must be positive! (0 included)")
         input()
         await self.menu()
@@ -35,22 +34,22 @@ async def hspammer_menu(self):
     async def hspammer(message):
         async with aiohttp.ClientSession() as session:
             while True:
-                await asyncio.sleep(float(delay))
+                await asyncio.sleep(delay)
                 try:
                     async with session.post(url=webhook, json={"content": message}) as response:
                         match response.status:
                             case 204:
                                 print(Fore.GREEN + " | [Sent] ", end="")
-                                hd_self.cmessage(f">>> '{message}' | {hd_self.dnow}")
+                                mself.cmessage(f">>> '{message}' | {mself.dnow}")
                             case 429:
                                 print(Fore.YELLOW + " | [Ratelimit] ", end="")
-                                hd_self.cmessage(f">>> '{message}' | {hd_self.dnow}")
+                                mself.cmessage(f">>> '{message}' | {mself.dnow}")
                             case _:
-                                hd_self.cmessage(f"[Failed] Status {response.status} - Failed to Spam URL.")
+                                mself.cmessage(f" [Failed] Status {response.status} - Failed to Spam URL.")
                                 input()
                                 break
                 except Exception as e:
-                    hd_self.cmessage(f"[ERROR] Network error: {str(e)}")
+                    mself.cmessage(f"[ERROR] Network error: {e}")
                     input()
                     break
 

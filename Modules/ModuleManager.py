@@ -1,4 +1,3 @@
-from typing import Self
 import requests
 import aiohttp
 import json
@@ -58,28 +57,28 @@ class ModuleManager():
     ]
     
     #Uses an hydra instance to call the methods inside the fuctions selected
-    async def select_module(self, hydra_self: Self, type: str, modulo: int) -> None:
+    async def select_module(self, hself, type: str, modulo: int) -> None:
        match type:
            case "tokens":
             try:
-                await self.token_modules[modulo-1](hydra_self)
+                await self.token_modules[modulo-1](hself)
             except Exception as e:
-                self.cmessage(e)
+                print(e)
                 input()
            case "webhooks":
             try:
-                await self.webhook_modules[modulo-1](hydra_self)
+                await self.webhook_modules[modulo-1](hself)
             except Exception as e:  
-                self.cmessage(e)	
+                print(e)	
                 input()
            case "misc":
             try:
-                await self.misc_modules[modulo-1](hydra_self)
+                await self.misc_modules[modulo-1](hself)
             except Exception as e:  
-                self.cmessage(e)	
+                print(e)
                 input() 
 
-    async def gheaders(self,channel_id:int,request_type:str,token:str) -> dict:
+    async def gheaders(self, channel_id: int, request_type: str, token: str) -> dict:
         """Generates new headers, in progress has async conflict issues with the better version"""
 
         def super_properties() -> dict:
@@ -148,7 +147,7 @@ class ModuleManager():
         except Exception as e:
             self.cmessage(f"\n| Error getting cookies >>: {e}")
 
-    async def cproxy(self,type:str) -> None:
+    async def cproxy(self, type: str) -> None:
         """Dependacy for load_proxies"""
         try:
             with open("Data/proxies.txt","r+") as proxies:
