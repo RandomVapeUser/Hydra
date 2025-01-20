@@ -48,7 +48,7 @@ class Main(Assets.AsciiAssets):
                 input()
                 await self.menu()
 
-    async def hcheck(self,webhook) -> None:
+    async def hcheck(self, webhook) -> None:
         """Check webhook status code (validate webhook)."""
         async with aiohttp.ClientSession() as session:
             try:
@@ -82,7 +82,8 @@ class Main(Assets.AsciiAssets):
         module_choice = input().strip()
         if int(module_choice) in choices[choice][0]:
             try:
-                await manager.select_module(self,choices[choice][int(module_choice)],choice)
+                await manager.select_module(self, choices[choice][int(module_choice)], choice)
+                return
             except Exception as exp:
                 print(exp)
                 input()
@@ -91,7 +92,7 @@ class Main(Assets.AsciiAssets):
             case "<<":
                 await self.menu()
             case _:
-                self.cmessage("\n        | Invalid Option try again.")
+                self.cmessage("\n | Invalid Option try again.")
                 input()
             
     async def settings(self) -> None:
