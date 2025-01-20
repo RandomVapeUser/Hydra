@@ -48,11 +48,11 @@ class Main(Assets.AsciiAssets):
                 input()
                 await self.menu()
 
-    async def hcheck(self) -> None:
+    async def hcheck(self,webhook) -> None:
         """Check webhook status code (validate webhook)."""
         async with aiohttp.ClientSession() as session:
             try:
-                async with session.get(self.webhook) as response:
+                async with session.get(webhook) as response:
                     match response.status:
                         case 200:
                             pass
@@ -63,7 +63,7 @@ class Main(Assets.AsciiAssets):
             except Exception:
                 self.cmessage("\n| Invalid Webhook URL. Try again!")
                 input()
-                self.menu()  
+                await self.menu()  
                 
     async def choice_manager(self, choice: int) -> None:
         choices = {

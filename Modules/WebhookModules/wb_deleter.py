@@ -7,7 +7,7 @@ async def hdeleter(self):
 
         self.cmessage(" | Webhook URL >>: ",True)
         self.webhook = input()
-        self.hcheck()
+        await self.hcheck()
         
         async with aiohttp.ClientSession() as session:
             try:
