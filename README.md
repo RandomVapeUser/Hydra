@@ -4,7 +4,7 @@
 
 **Errors to Fix**
 - ~~Crash at start (Circular Import and directory errors)~~
-- Divide each module into its seperate file
+- ~~Divide each module into its seperate file~~
 - ~~Settings and credits module functions~~
 - Modules not loading
 - Optimize code
@@ -52,5 +52,7 @@
 
 **Coded By:**
 - Sal (salomao31v3)
-- OndrasDEV (ondrasdev.)
+
+**Contributors**
+- OndrasDEV (For making the headers)
 
