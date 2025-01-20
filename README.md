@@ -52,5 +52,7 @@
 
 **Coded By:**
 - Sal (salomao31v3)
-- OndrasDEV (ondrasdev.)
+
+**Contributors**
+- OndrasDEV (For making the headers)
 
