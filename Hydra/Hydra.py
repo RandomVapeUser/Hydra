@@ -25,23 +25,37 @@ themes = {
 }
 
 class Main(Assets.AsciiAssets):
-    """Main class to handle menu"""
+    """
+    Main class to handle menu
+    """
+
     def __init__(self):
+        """
+        Initializer for Main class
+        """
         self.tokens = []
         self.tokenamount = 0
         self.dnow = str(datetime.datetime.now().strftime("%H:%M:%S"))
-    
+
     def clear(self) -> None:
+        """
+        Clear the console
+        """
         os.system("cls" if os.name == "nt" else "clear")
 
     def get_tokens(self) -> None:
-        """Updates Token List"""
+        """
+        Updates Token List
+        """
         with open("Data/tokens.txt", "r+") as tokens:
             for token in tokens:
                 self.tokens.append(token.strip())
             self.tokenamount = len(self.tokens)
 
     async def ctokens(self) -> None:
+        """
+        Check if tokens exist
+        """
         with open("Data/tokens.txt", "r+") as tokens:
             if tokens.read().strip() == "":
                 self.cmessage("\n| No tokens found, try again with tokens!")
@@ -49,7 +63,9 @@ class Main(Assets.AsciiAssets):
                 await self.menu()
 
     async def hcheck(self, webhook) -> None:
-        """Check webhook status code (validate webhook)."""
+        """
+        Check webhook status code (validate webhook)
+        """
         async with aiohttp.ClientSession() as session:
             try:
                 async with session.get(webhook) as response:
@@ -64,8 +80,11 @@ class Main(Assets.AsciiAssets):
                 self.cmessage("\n| Invalid Webhook URL. Try again!")
                 input()
                 await self.menu()  
-                
+
     async def choice_manager(self, choice: int) -> None:
+        """
+        Manager for choices
+        """
         choices = {
             1 : [[1,2,3,4],"webhooks",self.main_text[1]],
             2 : [[1,2,3,4,5,6,7,8,9],"tokens",self.main_text[0]],
@@ -96,7 +115,9 @@ class Main(Assets.AsciiAssets):
                 input()
             
     async def settings(self) -> None:
-        """Hydra Settings Menu"""
+        """
+        Hydra Settings Menu
+        """
         global themes
         self.clear()
         self.send_logo()
@@ -127,6 +148,9 @@ class Main(Assets.AsciiAssets):
                 await self.menu()
 
     async def credits(self) -> None:
+        """
+        Credits menu
+        """
         while True:
             self.clear()
             self.send_logo()
@@ -139,7 +163,9 @@ class Main(Assets.AsciiAssets):
         await self.menu()
 
     async def menu(self) -> None:
-        """Main menu for users"""
+        """
+        Main menu for users
+        """
         while True:
             self.clear()
             self.get_tokens()

@@ -4,7 +4,7 @@ import asyncio
 
 mself = None
 async def hspammer_menu(self):
-    """Spam the webhook with messages."""
+    """Spam the webhook with messages"""
     self.clear()
     self.send_logo()
     mself = self
