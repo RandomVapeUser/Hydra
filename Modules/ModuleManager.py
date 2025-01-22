@@ -69,7 +69,7 @@ class ModuleManager():
             try:
                 await self.webhook_modules[modulo-1](hself)
             except Exception as e:  
-                print(e)	
+                print(f"Module Manager: {e}")	
                 input()
            case "misc":
             try:

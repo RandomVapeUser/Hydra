@@ -104,7 +104,7 @@ class Main(Assets.AsciiAssets):
                 await manager.select_module(self, choices[choice][int(module_choice)], choice)
                 return
             except Exception as exp:
-                print(exp)
+                print(f"hdyra {exp}")
                 input()
 
         match module_choice:
