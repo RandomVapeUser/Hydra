@@ -97,21 +97,24 @@ class Main(Assets.AsciiAssets):
 
         self.clear()
         self.send_logo()
-        self.cmessage(choices[choice][2],True)
-        module_choice = input().strip()
-        if int(module_choice) in choices[choice][0]:
+        self.cmessage(choices[choice][2], True)
+        module_choice = int(input().strip())
+
+        #If module choice inside choices list
+        if module_choice in choices[choice][0]:
             try:
-                await manager.select_module(self, choices[choice][int(module_choice)], choice)
+                await manager.select_module(self, choices[choice][module_choice], choice) 
                 return
-            except Exception as exp:
-                print(f"hdyra {exp}")
+            except IndexError:
+                await self.cmessage("\n        | Invalid Module Choice. Try again!")
                 input()
+                self.menu()
 
         match module_choice:
             case "<<":
                 await self.menu()
             case _:
-                self.cmessage("\n | Invalid Option try again.")
+                await self.cmessage("\n | Invalid Option try again.")
                 input()
             
     async def settings(self) -> None:
