@@ -28,7 +28,7 @@ class Main(Assets.AsciiAssets):
     """
     Main class to handle menu
     """
-
+    
     def __init__(self):
         """
         Initializer for Main class
@@ -73,7 +73,7 @@ class Main(Assets.AsciiAssets):
                         case 200:
                             pass
                         case _:
-                            self.cmessage("\n| Invalid Webhook URL. Try again!")
+                            self.cmessage("\n | Invalid Webhook URL. Try again!")
                             input()
                             await self.menu()
             except Exception:
@@ -103,12 +103,12 @@ class Main(Assets.AsciiAssets):
         #If module choice inside choices list
         if module_choice in choices[choice][0]:
             try:
-                await manager.select_module(self, choices[choice][module_choice], choice) 
+                await manager.select_module(self, choices[choice][1], choice) 
                 return
-            except IndexError:
+            except Exception:
                 await self.cmessage("\n        | Invalid Module Choice. Try again!")
                 input()
-                self.menu()
+
 
         match module_choice:
             case "<<":

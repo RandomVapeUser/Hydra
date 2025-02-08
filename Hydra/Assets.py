@@ -23,7 +23,6 @@ class AsciiAssets:
         | [01] @~> Webhook Spammer
         | [02] @~> Webhook Name Changer
         | [03] @~> Webhook Deleter
-        | [04] @~> Webhook Info
         |
         | Choose >>: """,
         """

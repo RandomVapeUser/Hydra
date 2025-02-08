@@ -1,5 +1,6 @@
 import requests
 import aiohttp
+import time
 import json
 import sys
 import os
@@ -58,25 +59,18 @@ class ModuleManager():
     
     #Uses an hydra instance to call the methods inside the fuctions selected
     async def select_module(self, hself, type: str, modulo: int) -> None:
-       match type:
-           case "tokens":
-            try:
-                await self.token_modules[modulo-1](hself)
-            except Exception as e:
-                print(e)
-                input()
-           case "webhooks":
-            try:
-                await self.webhook_modules[modulo-1](hself)
-            except Exception as e:  
-                print(f"Module Manager: {e}")	
-                input()
-           case "misc":
-            try:
-                await self.misc_modules[modulo-1](hself)
-            except Exception as e:  
-                print(e)
-                input() 
+        print(f"Select Module Passed! | type -> {type} | module -> {modulo}")
+        input()
+        try:
+            match type:
+                case "tokens":
+                    await self.token_modules[modulo-1](hself)
+                case "webhooks":
+                    await self.webhook_modules[modulo-1](hself)
+                case "misc":
+                    await self.misc_modules[modulo-1](hself)
+        except Exception:
+            await hself.cmessage(f"\n Select Module Failed! | type -> {type} | module -> {modulo} | {Exception}")
 
     async def gheaders(self, channel_id: int, request_type: str, token: str) -> dict:
         """Generates new headers, in progress has async conflict issues with the better version"""
@@ -186,6 +180,7 @@ class ModuleManager():
             self.proxytype = config["proxy_type"]
         
     async def schecker(self, server_id: int) -> None:
+        """Checks if a user belongs to a guild or not"""
         async with aiohttp.ClientSession() as session:
             for token in self.tokens:
                 with open(f"Data/Token_Checks/SIDC_{server_id}.txt","w+") as f:
