@@ -4,7 +4,7 @@ import asyncio
 
 mself = None
 async def hspammer_menu(self):
-    """Spam the webhook with messages."""
+    """Spam the webhook with messages"""
     self.clear()
     self.send_logo()
     mself = self
@@ -46,14 +46,8 @@ async def hspammer_menu(self):
                                 mself.cmessage(f">>> '{message}' | {mself.dnow}")
                             case _:
                                 mself.cmessage(f" [Failed] Status {response.status} - Failed to Spam URL.")
-                                input()
-                                break
                 except Exception as e:
                     mself.cmessage(f"[ERROR] Network error: {e}")
-                    input()
-                    break
 
-    tasks = []
-    for _ in range(threads):
-        await asyncio.create_task(hspammer(message))
+    tasks = [hspammer(message) for _ in range(threads)]
     await asyncio.gather(*tasks)
