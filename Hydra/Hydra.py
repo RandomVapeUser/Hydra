@@ -103,6 +103,7 @@ class Main(Assets.AsciiAssets):
         #If module choice inside choices list
         if module_choice in choices[choice][0]:
             try:
+                #Hydra self, module type and selected choice
                 await manager.select_module(self, choices[choice][1], choice) 
                 return
             except Exception:
