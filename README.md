@@ -1,4 +1,4 @@
-# Multiporpuse Discord Tool
+# CLI Request Based Discord Multitool
 
 **Status:** Working at startup, modules not working.
 
