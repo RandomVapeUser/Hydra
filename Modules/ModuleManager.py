@@ -59,8 +59,8 @@ class ModuleManager():
     
     #Uses an hydra instance to call the methods inside the fuctions selected
     async def select_module(self, hself, type: str, modulo: int) -> None:
-        #print(f"Select Module Passed! | type -> {type} | module -> {modulo}")
-        #input()
+        print(f"Select Module Passed! | type -> {type} | module -> {modulo}")
+        input()
         try:
             match type:
                 case "tokens":

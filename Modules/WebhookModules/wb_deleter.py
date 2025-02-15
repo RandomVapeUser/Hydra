@@ -4,7 +4,8 @@ async def hdeleter(self):
         """Delete the webhook."""
         self.clear()
         self.send_logo()
-
+        print("Webhook Deleter")
+        
         self.cmessage(" | Webhook URL >>: ",True)
         self.webhook = input()
         await self.hcheck()

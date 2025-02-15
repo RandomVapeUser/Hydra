@@ -8,6 +8,8 @@ async def hspammer_menu(self):
     self.clear()
     self.send_logo()
     mself = self
+    
+    print("Webhook Spammer")
 
     self.cmessage(" | Webhook URL >>: ", True)
     webhook = input()

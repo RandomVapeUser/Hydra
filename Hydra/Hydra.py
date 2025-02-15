@@ -86,9 +86,9 @@ class Main(Assets.AsciiAssets):
         Manager for choices
         """
         choices = {
-            1 : [[1,2,3,4],"webhooks",self.main_text[1]],
+            1 : [[1,2,3],"webhooks",self.main_text[1]],
             2 : [[1,2,3,4,5,6,7,8,9],"tokens",self.main_text[0]],
-            3 : [[1,2,3],"misc",self.main_text[2]],
+            3 : [[1,2],"misc",self.main_text[2]],
             4 : self.settings,
             5 : self.credits
         }
@@ -104,7 +104,7 @@ class Main(Assets.AsciiAssets):
         if module_choice in choices[choice][0]:
             try:
                 #Hydra self, module type and selected choice
-                await manager.select_module(self, choices[choice][1], choice) 
+                await manager.select_module(self, choices[choice][1], module_choice) 
                 return
             except Exception:
                 await self.cmessage("\n        | Invalid Module Choice. Try again!")

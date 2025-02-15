@@ -1,2 +1,4 @@
+Modules/WebhookModules/*
+Modules/__pycache__/*
 config.json
 Data/*
