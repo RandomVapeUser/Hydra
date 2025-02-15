@@ -1,4 +1,4 @@
-# Hydra Multitool
+# Multiporpuse Discord Tool
 
 **Status:** Working at startup, modules not working.
 
