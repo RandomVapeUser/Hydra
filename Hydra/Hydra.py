@@ -77,7 +77,7 @@ class Main(Assets.AsciiAssets):
                             input()
                             await self.menu()
             except Exception:
-                self.cmessage("\n| Invalid Webhook URL. Try again!")
+                self.cmessage("\n | Invalid Webhook URL. Try again!")
                 input()
                 await self.menu()  
 

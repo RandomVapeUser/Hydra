@@ -7,7 +7,6 @@ async def hnamechanger(self):
         print("Test")
         self.clear()
         self.send_logo()
-        print("Webhook Name Changer")
 
         self.cmessage(" | Webhook URL >>: ",True)
         webhook = input()
