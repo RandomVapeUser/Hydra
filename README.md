@@ -1,6 +1,8 @@
 # CLI Request Based Discord Multitool
 
-![image](https://github.com/user-attachments/assets/cb48a59c-0eea-4e02-a98b-25b733000add)
+<p align="center">
+    <img width="200" src="https://github.com/user-attachments/assets/fe08b989-5173-4a6b-9e1d-a91cd5e73ccf" alt="Hydra Image">
+</p>
 
 **Made By**
 - Sal (salomao31_termedv2)
