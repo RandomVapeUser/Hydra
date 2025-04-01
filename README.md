@@ -1,12 +1,31 @@
-<h1 align="center">CLI Request Based Discord Multitool</h1>
+# Hydra
 
-<p align="center">
-    <img width="600" src="https://github.com/user-attachments/assets/fe08b989-5173-4a6b-9e1d-a91cd5e73ccf" alt="Hydra Image">
-</p>
+The goal of the project is test discords features with no current goal in mind.
 
-**Made By**
-- Sal (salomao31_termedv2)
+## Installation
 
-**Contributors**
-- OndrasDEV (For making the headers)
+```
+# Cloning the repo
+git clone https://github.com/RandomVapeUser/Hydra.git
+cd Hydra
 
+# Dependencies
+pip install -r requirements.txt
+
+# Run Hydra
+python main.py
+```
+
+## Contribution
+
+If you want to contribute to the project, follow these steps:
+
+1. Fork the repository.
+2. Create a new branch (`git checkout -b my-feature`).
+3. Make the necessary changes and commit (`git commit -m 'Added a new feature'`).
+4. Push to the repository (`git push origin my-feature`).
+5. Open a Pull Request.
+
+## Contact
+
+If you have any questions or suggestions, feel free to reach out via [RandomVapeUser](https://github.com/RandomVapeUser).
