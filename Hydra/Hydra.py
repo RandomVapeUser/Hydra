@@ -139,7 +139,7 @@ class Main(Assets.AsciiAssets):
                         "theme": themes[theme]
                         }
                     with open("config.json", "w") as config:
-                        json.dump(new_config, config)
+                        json.dump(new_config, config, indent=4)
                     
                     self.cmessage("\n        | Theme has been updated, restart Hydra to complete change.")
                     input()
