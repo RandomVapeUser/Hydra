@@ -1,7 +1,7 @@
 # Hydra
 
 The goal of the project is test discords features with no current goal in mind.
-Includes threading and proxy support.
+\nIncludes threading and proxy support.
 
 ## Installation
 
