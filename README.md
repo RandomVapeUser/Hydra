@@ -16,6 +16,26 @@ pip install -r requirements.txt
 python main.py
 ```
 
+## Features
+
+- [X] Webhook Spammer
+- [X] Webhook Name Changer
+- [X] Webhook Deleter
+
+- [X] Token Checker
+- [X] Channel Spammer (mass ping + proxy)
+- [X] User Scraper
+- [X] Token Formater
+- [X] Bio Changer
+- [X] Server Checker
+- [ ] Nickname Changer
+- [ ] Server Joiner
+- [ ] Rules Accepter
+
+- [x] Invite Info
+- [X] Group Chat Name Changer Spammer (GCNCS)
+- [X] Dm Spammer
+         
 ## Contribution
 
 If you want to contribute to the project, follow these steps:
