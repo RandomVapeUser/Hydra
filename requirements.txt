@@ -1,0 +1,6 @@
+names_generator
+asyncio
+colorama
+aiohttp
+requests
+websocket-client
