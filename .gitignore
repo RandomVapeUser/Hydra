@@ -1,5 +1,5 @@
-/Modules/WebhookModules/*
-/Modules/pycache/*
-/Hydra/pycache/*
+/Modules/WebhookModules/__pycache__
+/Modules/__pycache__/*
+/Hydra/__pycache__/*
 config.json
 Data/*

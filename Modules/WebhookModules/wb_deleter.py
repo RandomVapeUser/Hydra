@@ -1,5 +1,6 @@
 import aiohttp
 
+
 async def hdeleter(self):
     """Delete the webhook."""
     self.clear()

@@ -58,8 +58,7 @@ class Main(Assets.AsciiAssets):
         """
         with open("Data/tokens.txt", "r+") as tokens:
             if tokens.read().strip() == "":
-                self.cmessage("\n| No tokens found, try again with tokens!")
-                input()
+                self.cmessage("\n| No tokens found, try again with tokens!"); input()
                 await self.menu()
 
     async def hcheck(self, webhook) -> None:
@@ -73,50 +72,41 @@ class Main(Assets.AsciiAssets):
                         case 200:
                             pass
                         case _:
-                            self.cmessage("\n | Invalid Webhook URL. Try again!")
-                            input()
+                            self.cmessage("\n | Invalid Webhook URL. Try again!"); input()
                             await self.menu()
             except Exception:
-                self.cmessage("\n | Invalid Webhook URL. Try again!")
-                input()
+                self.cmessage("\n | Invalid Webhook URL. Try again!"); input()
                 await self.menu()  
 
-    async def choice_manager(self, choice: int) -> None:
+    async def choice_manager(self, choice: str) -> None:
         """
         Manager for choices
         """
         choices = {
-            "1" : [[1,2,3],"webhooks",self.main_text[1]],
-            "2" : [[1,2,3,4,5,6,7,8,9],"tokens",self.main_text[0]],
-            "3" : [[1,2],"misc",self.main_text[2]],
+            "1" : [["1", "2", "3"], "webhooks", self.main_text[1]],
+            "2" : [["1", "2", "3", "4", "5", "6", "7", "8", "9"], "tokens", self.main_text[0]],
+            "3" : [["1", "2"], "misc", self.main_text[2]],
             "4" : self.settings,
             "5" : self.credits
         }
+ 
+        if choice in ["4", "5"]:
+            await choices[choice]()
 
-        await choices[choice]() if choice in ["4","5"] else None
+        while True:
 
-        self.clear()
-        self.send_logo()
-        self.cmessage(choices[choice][2], True)
-        module_choice = int(input().strip())
+            self.clear()
+            self.send_logo()
+            self.cmessage(choices[choice][2], True)
+            module_choice = input().strip()
 
-        #If module choice inside choices list
-        if module_choice in choices[choice][0]:
-            try:
-                #Hydra self, module type and selected choice
+            if module_choice in choices[choice][0]:
                 await manager.select_module(self, choices[choice][1], module_choice) 
-                return
-            except Exception:
-                await self.cmessage("\n        | Invalid Module Choice. Try again!")
-                input()
-
-
-        match module_choice:
-            case "<<":
+            elif module_choice == "<<":
                 await self.menu()
-            case _:
-                await self.cmessage("\n | Invalid Option try again.")
-                input()
+                break
+            else:
+                continue
             
     async def settings(self) -> None:
         """
@@ -173,13 +163,13 @@ class Main(Assets.AsciiAssets):
         while True:
             self.clear()
             self.get_tokens()
-            os.system(f"        title Hydra Multitool ^| Loaded {self.tokenamount} tokens ^| Version 0.6.1 Recoded by salomao31v3")
+            os.system(f"        title Hydra Multitool ^| Loaded {self.tokenamount} tokens ^| Version 0.6.2 Recoded by salomao31_termedv2")
             self.send_logo()
-            self.cmessage(f"\n        [Token Amount] ~> Loaded {self.tokenamount} tokens!")
+            self.cmessage(f"\n        [Token Amount] -> Loaded {self.tokenamount} tokens!")
             self.cmessage(self.main_text[6],True)
 
             choice = input().strip()
             if choice in ["1", "2", "3", "4", "5"]:
-                await self.choice_manager(int(choice))
+                await self.choice_manager(choice)
             else:
                 continue

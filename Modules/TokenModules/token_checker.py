@@ -18,17 +18,17 @@ async def token_checker(self) -> None:
                     case 200:
                         self.cmessage("| ",True)
                         print(Fore.GREEN + "[Valid Token] ", end="")
-                        self.cmessage(f">>> {final_token}")
+                        self.cmessage(f"-> {final_token}")
                         Valid_list.append(token)
                     case 403:
                         self.cmessage("| ",True)
                         print(Fore.YELLOW + "[Locked Token] ", end="")
-                        self.cmessage(f">>> {final_token}")
+                        self.cmessage(f"-> {final_token}")
                         Locked_list.append(token)
                     case _:
                         self.cmessage("| ",True)
                         print(Fore.RED + "[Invalid Token] ", end="")
-                        self.cmessage(f">>> {final_token}")
+                        self.cmessage(f"-> {final_token}")
                         Invalid_list.append(token)
     tasks = []
     for token in self.tokens:

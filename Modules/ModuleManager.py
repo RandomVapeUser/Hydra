@@ -31,9 +31,6 @@ from MiscModules import (
 )
 
 class ModuleManager():
-    def __init__(self) -> None:
-        pass
-
     token_modules = [
         token_cspammer.channel_spammer,
         token_joiner.joiner_menu,
@@ -59,21 +56,16 @@ class ModuleManager():
     
     #Uses an hydra instance to call the methods inside the fuctions selected
     async def select_module(self, hself, type: str, modulo: int) -> None:
-        print(f"Select Module Passed! | type -> {type} | module -> {modulo}")
-        input()
-        try:
-            match type:
-                case "tokens":
-                    await self.token_modules[modulo-1](hself)
-                case "webhooks":
-                    await self.webhook_modules[modulo-1](hself)
-                case "misc":
-                    await self.misc_modules[modulo-1](hself)
-        except Exception:
-            await hself.cmessage(f"\n Select Module Failed! | type -> {type} | module -> {modulo} | {Exception}")
+        match type:
+            case "tokens":
+                await self.token_modules[int(modulo) - 1](hself)
+            case "webhooks":
+                await self.webhook_modules[int(modulo) - 1](hself)
+            case "misc":
+                await self.misc_modules[int(modulo) - 1](hself)
 
     async def gheaders(self, channel_id: int, request_type: str, token: str) -> dict:
-        """Generates new headers, in progress has async conflict issues with the better version"""
+        """Generates new headers, in progress has async issues with the better version"""
 
         def super_properties() -> dict:
             return {
