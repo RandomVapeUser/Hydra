@@ -86,14 +86,14 @@ class Main(Assets.AsciiAssets):
         Manager for choices
         """
         choices = {
-            1 : [[1,2,3],"webhooks",self.main_text[1]],
-            2 : [[1,2,3,4,5,6,7,8,9],"tokens",self.main_text[0]],
-            3 : [[1,2],"misc",self.main_text[2]],
-            4 : self.settings,
-            5 : self.credits
+            "1" : [[1,2,3],"webhooks",self.main_text[1]],
+            "2" : [[1,2,3,4,5,6,7,8,9],"tokens",self.main_text[0]],
+            "3" : [[1,2],"misc",self.main_text[2]],
+            "4" : self.settings,
+            "5" : self.credits
         }
-        if choice in [4,5]:
-            await choices[choice]()
+
+        await choices[choice]() if choice in ["4","5"] else None
 
         self.clear()
         self.send_logo()
@@ -179,10 +179,7 @@ class Main(Assets.AsciiAssets):
             self.cmessage(self.main_text[6],True)
 
             choice = input().strip()
-            try:
-                if int(choice) in [1,2,3,4,5]:
-                    await self.choice_manager(int(choice))
-                else:
-                    continue
-            except Exception:
+            if choice in ["1", "2", "3", "4", "5"]:
+                await self.choice_manager(int(choice))
+            else:
                 continue
