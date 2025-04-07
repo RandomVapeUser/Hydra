@@ -23,6 +23,7 @@ python main.py
 - [X] Webhook Name Changer
 - [X] Webhook Deleter
 
+### Token
 - [X] Token Checker
 - [X] Channel Spammer (mass ping + proxy)
 - [X] User Scraper
@@ -33,6 +34,7 @@ python main.py
 - [ ] Server Joiner
 - [ ] Rules Accepter
 
+### Misc
 - [x] Invite Info
 - [X] Group Chat Name Changer Spammer (GCNCS)
 - [X] Dm Spammer
