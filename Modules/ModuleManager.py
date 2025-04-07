@@ -1,6 +1,5 @@
 import requests
 import aiohttp
-import time
 import json
 import sys
 import os
